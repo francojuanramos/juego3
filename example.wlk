@@ -2,6 +2,7 @@ import clases.*
 import mainExample.*
 
 object partida2 {
+//TODO SOBRE PAREDES
   const paredes = [
   //BORDES
   new Pared (x = 0, y = 0, imagen = "ladrillo1.png"),
@@ -264,6 +265,37 @@ object partida2 {
   method iniciarParedes(){
     paredes.forEach({pared => pared.iniciar()})
   }
+  
+  //TODO SOBRE MANZANAS
+  const objetivoManzanas = 14
+  
+  var manzanasActuales = 0
+
+  const manzanas = [
+  new Manzana(x = 2, y = 2, imagen = "manzana.png"),
+  new Manzana(x = 3, y = 16, imagen = "manzana.png"),
+  new Manzana(x = 4, y = 12, imagen = "manzana.png"),
+  new Manzana(x = 4, y = 15, imagen = "manzana.png"),
+  new Manzana(x = 4, y = 16, imagen = "manzana.png"),
+  new Manzana(x = 5, y = 13, imagen = "manzana.png"),
+  new Manzana(x = 7, y = 1, imagen = "manzana.png"),
+  new Manzana(x = 10, y = 18, imagen = "manzana.png"),
+  new Manzana(x = 11, y = 5, imagen = "manzana.png"),
+  new Manzana(x = 14, y = 14, imagen = "manzana.png"),
+  new Manzana(x = 14, y = 17, imagen = "manzana.png"),
+  new Manzana(x = 15, y = 3, imagen = "manzana.png"),
+  new Manzana(x = 15, y = 18, imagen = "manzana.png"),
+  new Manzana(x = 16, y = 13, imagen = "manzana.png")]
+
+  method manzanasPartida() = manzanas
+
+  method iniciarManzanas(){
+    manzanas.forEach({manzana => manzana.iniciar()})
+  }
+
+  method sumarManzana(){
+    manzanasActuales += 1
+  }
 
   method iniciar() {
     game.height(20)
@@ -272,10 +304,12 @@ object partida2 {
     game.ground("gris1.png")
     personaje.iniciar()
     self.iniciarParedes()
+    self.iniciarManzanas()
   }
   
   method personaje() = personaje
 }
+
 object personaje {
   var property position = game.at(1,1)
   var property imagen = "nube.png"
@@ -288,6 +322,11 @@ object personaje {
 
   method interactuarPared(){
     //no pongo nada porque quiero que se quede en su posicion actual
+  }
+
+  method interactuarManzana(manzana){
+    manzana.desaparecer()
+    partida2.sumarManzana()
   }
 
   method moverse(direccion) {

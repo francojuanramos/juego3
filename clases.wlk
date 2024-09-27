@@ -19,6 +19,24 @@ class Pared{
   }
 }
 
+class Manzana{
+  const x
+  const y
+  var imagen
+  var property position = game.at(x,y)
+
+  method image() = imagen
+  method iniciar(){
+    game.addVisual(self)
+    game.whenCollideDo(self, {personaje => personaje.interactuarManzana(self)})
+  }
+  
+  method desaparecer(){
+    game.removeVisual(self)
+  }
+
+}
+
 object partida {
   var partidaActual = partida2
   var personajeActual = partidaActual.personaje()
