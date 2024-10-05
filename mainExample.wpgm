@@ -4,68 +4,132 @@ import clases.*
 program juego3{
 	partida3.iniciar()
 	game.start()
-
+//movimiento personaje1
 	keyboard.w().onPressDo
 	({
-		const nuevaPosicionY = partida3.personaje().position().y() + 1
+		const nuevaPosicionY = partida3.personaje1().position().y() + 1
 
-		const nuevaPosicionX = partida3.personaje().position().x()
+		const nuevaPosicionX = partida3.personaje1().position().x()
 
 		const paredes = partida.paredes()
 
 		if((paredes.any({pared => (pared.y() == nuevaPosicionY) && pared.x() == nuevaPosicionX})).negate()){
-			partida.personaje().moverse("arriba")
+			partida.personaje1().moverse("arriba")
 		}
 		else{
-			partida.personaje().interactuarPared()
+			partida.personaje1().interactuarPared()
 		}
 	})
 
 	keyboard.a().onPressDo
 	({
-		const nuevaPosicionY = partida3.personaje().position().y() 
+		const nuevaPosicionY = partida3.personaje1().position().y() 
 
-		const nuevaPosicionX = partida3.personaje().position().x() - 1
+		const nuevaPosicionX = partida3.personaje1().position().x() - 1
 
 		const paredes = partida.paredes()
 
 		if((paredes.any({pared => (pared.y() == nuevaPosicionY) && pared.x() == nuevaPosicionX})).negate()){
-			partida.personaje().moverse("izquierda")
+			partida.personaje1().moverse("izquierda")
 		}
 		else{
-			partida.personaje().interactuarPared()
+			partida.personaje1().interactuarPared()
 		}
 	})
 
 	keyboard.s().onPressDo
 	({
-		const nuevaPosicionY = partida3.personaje().position().y() - 1
+		const nuevaPosicionY = partida3.personaje1().position().y() - 1
 
-		const nuevaPosicionX = partida3.personaje().position().x()
+		const nuevaPosicionX = partida3.personaje1().position().x()
 
 		const paredes = partida.paredes()
 
 		if((paredes.any({pared => (pared.y() == nuevaPosicionY) && pared.x() == nuevaPosicionX})).negate()){
-			partida.personaje().moverse("abajo")
+			partida.personaje1().moverse("abajo")
 		}
 		else{
-			partida.personaje().interactuarPared()
+			partida.personaje1().interactuarPared()
 		}
 	})
 
 	keyboard.d().onPressDo
 	({
-		const nuevaPosicionY = partida3.personaje().position().y()
+		const nuevaPosicionY = partida3.personaje1().position().y()
 
-		const nuevaPosicionX = partida3.personaje().position().x() + 1
+		const nuevaPosicionX = partida3.personaje1().position().x() + 1
 
 		const paredes = partida.paredes()
 
 		if((paredes.any({pared => (pared.y() == nuevaPosicionY) && pared.x() == nuevaPosicionX})).negate()){
-			partida.personaje().moverse("derecha")
+			partida.personaje1().moverse("derecha")
 		}
 		else{
-			partida.personaje().interactuarPared()
+			partida.personaje1().interactuarPared()
+		}
+	})
+//movimiento personaje2
+	keyboard.w().onPressDo
+	({
+		const nuevaPosicionY2 = partida3.personaje2().position().y() + 1
+
+		const nuevaPosicionX2 = partida3.personaje2().position().x()
+
+		const paredes = partida.paredes()
+
+		if((paredes.any({pared => (pared.y() == nuevaPosicionY2) && pared.x() == nuevaPosicionX2})).negate()){
+			partida.personaje2().moverse("arriba")
+		}
+		else{
+			partida.personaje2().interactuarPared()
+		}
+	})
+
+	keyboard.a().onPressDo
+	({
+		const nuevaPosicionY2 = partida3.personaje2().position().y() 
+
+		const nuevaPosicionX2 = partida3.personaje2().position().x() - 1
+
+		const paredes = partida.paredes()
+
+		if((paredes.any({pared => (pared.y() == nuevaPosicionY2) && pared.x() == nuevaPosicionX2})).negate()){
+			partida.personaje2().moverse("izquierda")
+		}
+		else{
+			partida.personaje2().interactuarPared()
+		}
+	})
+
+	keyboard.s().onPressDo
+	({
+		const nuevaPosicionY2 = partida3.personaje2().position().y() - 1
+
+		const nuevaPosicionX2= partida3.personaje2().position().x()
+
+		const paredes = partida.paredes()
+
+		if((paredes.any({pared => (pared.y() == nuevaPosicionY2) && pared.x() == nuevaPosicionX2})).negate()){
+			partida.personaje2().moverse("abajo")
+		}
+		else{
+			partida.personaje2().interactuarPared()
+		}
+	})
+
+	keyboard.d().onPressDo
+	({
+		const nuevaPosicionY2 = partida3.personaje2().position().y()
+
+		const nuevaPosicionX2 = partida3.personaje2().position().x() + 1
+
+		const paredes = partida.paredes()
+
+		if((paredes.any({pared => (pared.y() == nuevaPosicionY2) && pared.x() == nuevaPosicionX2})).negate()){
+			partida.personaje2().moverse("derecha")
+		}
+		else{
+			partida.personaje2().interactuarPared()
 		}
 	})
 

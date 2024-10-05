@@ -30,18 +30,16 @@ class Manzana{
     game.addVisual(self)
     game.whenCollideDo(self, {personaje => personaje.interactuarManzana(self)})
   }
-  
-  method desaparecer(){
-    game.removeVisual(self)
-  }
 
 }
 
 object partida {
   var partidaActual = partida3
-  var personajeActual = partidaActual.personaje()
+  var personajeActual = partidaActual.personaje1()
+  var personajeActual2 = partidaActual.personaje2()
 
-method personaje() = personajeActual
+method personaje1() = personajeActual
+method personaje2() = personajeActual2
 
 method paredes() = partidaActual.paredesPartida()
   
