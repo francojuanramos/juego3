@@ -38,7 +38,7 @@ class Manzana{
 }
 
 object partida {
-  var partidaActual = partida2
+  var partidaActual = partida3
   var personajeActual = partidaActual.personaje()
 
 method personaje() = personajeActual

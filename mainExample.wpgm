@@ -1,15 +1,15 @@
 import example.*
 import clases.*
 
-program juego2{
-	partida2.iniciar()
+program juego3{
+	partida3.iniciar()
 	game.start()
 
 	keyboard.w().onPressDo
 	({
-		const nuevaPosicionY = partida2.personaje().position().y() + 1
+		const nuevaPosicionY = partida3.personaje().position().y() + 1
 
-		const nuevaPosicionX = partida2.personaje().position().x()
+		const nuevaPosicionX = partida3.personaje().position().x()
 
 		const paredes = partida.paredes()
 
@@ -23,9 +23,9 @@ program juego2{
 
 	keyboard.a().onPressDo
 	({
-		const nuevaPosicionY = partida2.personaje().position().y() 
+		const nuevaPosicionY = partida3.personaje().position().y() 
 
-		const nuevaPosicionX = partida2.personaje().position().x() - 1
+		const nuevaPosicionX = partida3.personaje().position().x() - 1
 
 		const paredes = partida.paredes()
 
@@ -39,9 +39,9 @@ program juego2{
 
 	keyboard.s().onPressDo
 	({
-		const nuevaPosicionY = partida2.personaje().position().y() - 1
+		const nuevaPosicionY = partida3.personaje().position().y() - 1
 
-		const nuevaPosicionX = partida2.personaje().position().x()
+		const nuevaPosicionX = partida3.personaje().position().x()
 
 		const paredes = partida.paredes()
 
@@ -55,9 +55,9 @@ program juego2{
 
 	keyboard.d().onPressDo
 	({
-		const nuevaPosicionY = partida2.personaje().position().y()
+		const nuevaPosicionY = partida3.personaje().position().y()
 
-		const nuevaPosicionX = partida2.personaje().position().x() + 1
+		const nuevaPosicionX = partida3.personaje().position().x() + 1
 
 		const paredes = partida.paredes()
 

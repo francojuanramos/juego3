@@ -1,7 +1,7 @@
 import clases.*
 import mainExample.*
 
-object partida2 {
+object partida3 {
 //TODO SOBRE PAREDES
   const paredes = [
   //BORDES
@@ -326,7 +326,7 @@ object personaje {
 
   method interactuarManzana(manzana){
     manzana.desaparecer()
-    partida2.sumarManzana()
+    partida3.sumarManzana()
   }
 
   method moverse(direccion) {
