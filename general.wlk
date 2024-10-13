@@ -1,11 +1,12 @@
 import wollok.game.*
-import juego1.*
+import juego3.*
+
 
 /*-----------------------------------------------OBJETO PARTIDA, EL MÁS IMPORTANTE DE TODOS-----------------------------------------*/
 
 object partida {
 
-  var property partidaActual = partida1
+  var property partidaActual = partida3
 
   var property imagenPared = partidaActual.imagenPared()
 
@@ -26,16 +27,25 @@ object partida {
   
   method paredes() = partidaActual.paredesPartida()
 }
+/*---------------------------------------------Clase general de las manzanas y paredes-------------------------------------*/
+class Cosas {
+
+  var x
+
+  var y 
+
+  var property position = game.at(x, y)
+  
+  method finalizar() {
+
+    game.removeVisual(self)
+
+  }
+}
 
 
 /*---------------------------------------------Objetos relacionados con las manzanas-------------------------------------*/
-class Manzana {
-
-  const x
-
-  const y
-
-  var property position = game.at(x, y)
+class Manzana inherits Cosas {
 
   const imagen
   
@@ -48,13 +58,7 @@ class Manzana {
     game.addVisual(self)
   }
   
-  method desaparecer() {
-    game.removeVisual(self)
-  }
-  
 }
-
-
 
 /*------------------------Objetos relacionados con las direcciones y los movimientos de los personajes------------------------------------*/
 object izquierda
@@ -63,11 +67,11 @@ object izquierda
 
   const position = personaje.position()
 
-  const nuevaPosicion = game.at(position.x() - 1, position.y())
+  method nuevaPosicion() = game.at(personaje.position().x() - 1, personaje.position().y())
 
   method moverse()
   {
-    personaje.position(nuevaPosicion)
+    personaje.position(self.nuevaPosicion())
 
     personaje.moverCuerpos(position)
   }
@@ -79,11 +83,11 @@ object derecha
 
   const position = personaje.position()
 
-  const nuevaPosicion = game.at(position.x() + 1, position.y())
+  method nuevaPosicion() = game.at(personaje.position().x() + 1, personaje.position().y())
 
   method moverse()
   {
-    personaje.position(nuevaPosicion)
+    personaje.position(self.nuevaPosicion())
 
     personaje.moverCuerpos(position)
   }
@@ -95,11 +99,12 @@ object arriba
 
   const position = personaje.position()
 
-  const nuevaPosicion = game.at(position.x(), position.y() + 1)
+  method nuevaPosicion() = game.at(personaje.position().x(), personaje.position().y() + 1)
 
   method moverse()
   {
-    personaje.position(nuevaPosicion)
+  
+    personaje.position(self.nuevaPosicion())
 
     personaje.moverCuerpos(position)
   }
@@ -111,11 +116,11 @@ object abajo
 
   const position = personaje.position()
 
-  const nuevaPosicion = game.at(position.x(), position.y() - 1)
+  method nuevaPosicion() = game.at(personaje.position().x(), personaje.position().y() - 1)
 
   method moverse()
   {
-    personaje.position(nuevaPosicion)
+    personaje.position(self.nuevaPosicion())
 
     personaje.moverCuerpos(position)
   }
@@ -124,13 +129,8 @@ object abajo
 /*----------------------------------------------TODO SOBRE PAREDES-----------------------------------------------------------------------*/
 
 /*--------------------------------------CLASES---------------------------------------------*/
-class Pared {
 
-  var x
-
-  var y 
-
-  var property position = game.at(x, y)
+class Pared inherits Cosas {
 
   method image() = partida.imagenPared()
 
@@ -139,12 +139,6 @@ class Pared {
     game.whenCollideDo(self, { personaje => personaje.interactuarPared() })
 
     game.addVisual(self)
-
-  }
-  
-  method finalizar() {
-
-    game.removeVisual(self)
 
   }
 }
@@ -225,7 +219,7 @@ object pr
   {
     
     //La crea, la añade a la visual, y la retorna
-    var nuevaPared = new ParedQueResetea(x = columna, y = fila)
+    var nuevaPared = new ParedQueReinicia(x = columna, y = fila)
 
     game.addVisual(nuevaPared)
 

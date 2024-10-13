@@ -1,5 +1,5 @@
 import wollok.game.*
-import juego1.*
+import juego3.*
 import general.*
 
 program miniJuego{
@@ -15,7 +15,7 @@ program miniJuego{
 	//Seteamos el tamaño de la celda
 	game.cellSize(40)
 
-	keyboard.enter().onPressDo( {partida1.iniciar()} )
+	keyboard.enter().onPressDo( {partida3.iniciar()} )
 
 	keyboard.w().onPressDo({
 
@@ -24,7 +24,7 @@ program miniJuego{
 		const nuevaPosicionX = partida.personaje().position().x()	
 
 		const paredes = partida.paredes()
-			
+		
         //ACA SE VERIFICA SI AL MOVERSE CHOCA CON UNA PARED
 		if((paredes.any({pared => (pared.y() == nuevaPosicionY) && (pared.x() == nuevaPosicionX)})).negate()){
 
@@ -58,7 +58,7 @@ program miniJuego{
 		if((paredes.any({pared => (pared.y() == nuevaPosicionY) && (pared.x() == nuevaPosicionX)})).negate()){
 
 			//Si no choca, el personaje se desplazará a la dirección
-			arriba.moverse()
+			izquierda.moverse()
 
 		}
 		else{
@@ -88,7 +88,7 @@ program miniJuego{
 		if((paredes.any({pared => (pared.y() == nuevaPosicionY) && (pared.x() == nuevaPosicionX)})).negate()){
 
 			//Si no choca, el personaje se desplazará a la dirección
-			arriba.moverse()
+			abajo.moverse()
 
 		}
 		else{
@@ -117,7 +117,7 @@ program miniJuego{
 		if((paredes.any({pared => (pared.y() == nuevaPosicionY) && (pared.x() == nuevaPosicionX)})).negate()){
 
 			//Si no choca, el personaje se desplazará a la dirección
-			arriba.moverse()
+			derecha.moverse()
 
 		}
 		else{
